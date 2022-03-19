@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body style="background-color:lightblue;">
+    <div ng-controller="shorternurlController">
+        <h1 class="header">Shorten URL Generation</h1>
+        <br></br>
+        <div>
+            <label for="url"><b>Paste Long URL : </b></label>
+            <input type="text" id="longurl" style="width:500px;" placeholder="Enter Complete URL" name="url" required />
+            <span>{{status}}</span>
+        </div>
+        <br>
+
+        <div>
+            <label for="display"><b>Shorten URL : &nbsp; {{shortenurl}}</b></label>
+        </div>
+        <button id="buttonplace" class="w3-btn w3-blue w3-ripple" ng-click="submit()" type="submit">Shorten URL</button>
+
+
+        <br></br>
+        <h1 class="header">Captcha</h1>
+        <br></br>
+
+        <div>
+            <label for="captcha"><b>Enter Captcha : </b></label>
+            <input type="text" id="captcha" style="width:200px;" placeholder="Enter Captcha" name="captcha" maxlength="8" required />
+            <span>{{captchastatus}}</span>
+        </div>
+        <br>
+        <div>
+            <!-- <input type="text" readonly id="captchavalue" > -->
+            <img ng-src="{{captchaimage}}" />
+            <button style="background-color:grey;  color: rgb(219, 217, 217)" ng-click="refresh()"
+                type="submit">Refresh</button>
+        </div>
+        <button id="buttonplace" class="w3-btn w3-blue w3-ripple" ng-click="submitcaptcha()" type="submit">Verify
+            Captcha</button>
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="bitlycontroller.js"></script>
+</body>
+
+</html>
