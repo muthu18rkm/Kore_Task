@@ -64,6 +64,8 @@ app.post("/shortenurl/createshortenurl/", (req, res) => {
 
 //Generate Capatcha
 app.get("/captcha/createcaptch/", (req, res) => {
+
+    //This method Image render in not working
     // let captchavalues = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz".split("");
     // let values = [];
     // let length = 10;
@@ -77,5 +79,37 @@ app.get("/captcha/createcaptch/", (req, res) => {
     res.status(200).send(result);
 });
 
+//Get Paging 
+
+app.get('/paginate/getpaginatevalue/', (req, res) => {
+
+    const users = [
+        { "_id": 1, "Name": "User 1" },
+        { "_id": 2, "Name": "User 2" },
+        { "_id": 3, "Name": "User 3" },
+        { "_id": 4, "Name": "User 4" },
+        { "_id": 5, "Name": "User 5" },
+        { "_id": 6, "Name": "User 6" },
+        { "_id": 7, "Name": "User 7" },
+        { "_id": 8, "Name": "User 8" },
+        { "_id": 9, "Name": "User 9" },
+        { "_id": 10, "Name": "User 10" },
+        { "_id": 11, "Name": "User 11" },
+        { "_id": 12, "Name": "User 12" },
+        { "_id": 13, "Name": "User 13" },
+    ]
+
+    let page = parseInt(req.query.page);
+    let limit = users.length;
+    if (req.query.limit) {
+        limit = parseInt(req.query.limit);
+    }
+    let startindex = (page - 1) * limit;
+    let endindex = page * limit;
+
+    let result = users.slice(startindex, endindex);
+    res.status(200).send(JSON.stringify(result))
+
+});
 
 
